@@ -1,4 +1,4 @@
-def arithmetic_arranger(problems, *args):
+def arithmetic_arranger(problems, return_value=False):
     # test problems' length
     if len(problems) > 5:
         return "Error: Too many problems."
@@ -37,16 +37,15 @@ def arithmetic_arranger(problems, *args):
         arranged_problems = line1 + '\n' + line2 + '\n' + line3
 
         # test if answers are needed 
-        if len(args) > 0:
-            if args[0]:
-                ans = [str(int1 + int2) if op == '+' else str(int1 - int2)][0]
+        if return_value:
+            ans = str(int1 + int2) if op == '+' else str(int1 - int2)
                 
-                if i == 0:
-                    line4 = ' ' * (maxlen - len(ans)) + ans
-                else:
-                    line4 += ' ' * (4 + maxlen - len(ans)) + ans
+            if i == 0:
+                line4 = ' ' * (maxlen - len(ans)) + ans
+            else:
+                line4 += ' ' * (4 + maxlen - len(ans)) + ans
                 
-                if i == len(problems) - 1:
-                    arranged_problems += '\n' + line4
+            if i == len(problems) - 1:
+                arranged_problems += '\n' + line4
 
     return arranged_problems
